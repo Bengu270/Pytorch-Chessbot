@@ -1,2 +1,21 @@
 # Pytorch-Chessbot
-This CNN built in pytorch is a prototype for a chess playing robot. It is a multi-class classification model trained on over 3.8 million moves.
+A PyTorch CNN that predicts the next chess move from a board position, trained on about 3.9 million positions from 2000+ Elo Lichess games.
+--- Currently in prototype stage ---
+
+# How it works
+
+Input: a 17x8x8 tensor made of 12 piece planes, 1 side-to-move plane and 4 castling-rights planes.
+
+Output: 4032 classes, one for every pair of different squares (64 x 63).
+
+Playing: illegal moves are masked out with python-chess, and the highest-scoring legal move is played. Pawn promotions default to queen.
+
+# Training
+
+Loss: CrossEntropyLoss
+Optimizer: Adam
+Batch size: 512
+
+# Requirements
+
+torch, numpy, python-chess
